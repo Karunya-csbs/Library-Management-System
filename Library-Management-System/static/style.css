@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #141e30, #243b55);
+  color:blue;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  color: rgb(144, 238, 130); /* Bright Green Color */
+  font-size: 2.5rem;
+  margin-bottom: 30px; /* Space between header and register box */
+}
+
+
+.container {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+input, button, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+input, select, textarea {
+  background: #f0f0f0;
+  color: #000;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+button {
+  background-color: #00d9ff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #00b8d4;
+}
+
+a {
+  color: #00d9ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #00d9ff;
+  color: black;
+}

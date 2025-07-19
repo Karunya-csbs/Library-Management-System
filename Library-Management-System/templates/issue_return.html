@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue/Return Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow-md">
+        <h2 class="text-2xl font-bold mb-4 text-center">Issue / Return Books</h2>
+        
+        <form action="/issue_return" method="POST" class="grid grid-cols-1 gap-4 mb-8">
+            <div>
+                <label class="block font-semibold">Select Book:</label>
+                <select name="book_name" required class="w-full p-2 border rounded">
+                    <option value="" disabled selected>Select a book</option>
+                    {% for book in books %}
+                        <option value="{{ book }}">{{ book }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block font-semibold">Student Name:</label>
+                <input type="text" name="student_name" required class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label class="block font-semibold mb-1">Action:</label>
+                <div class="flex items-center gap-4">
+                    <label><input type="radio" name="action" value="issue" required> Issue</label>
+                    <label><input type="radio" name="action" value="return"> Return</label>
+                </div>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Submit
+            </button>
+        </form>
+
+        <h3 class="text-xl font-semibold mb-4">Transaction History</h3>
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-300 p-2">ID</th>
+                    <th class="border border-gray-300 p-2">Book</th>
+                    <th class="border border-gray-300 p-2">Student</th>
+                    <th class="border border-gray-300 p-2">Date & Time</th>
+                    <th class="border border-gray-300 p-2">Action</th>
+                    <th class="border border-gray-300 p-2">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for txn in transactions %}
+                    <tr>
+                        <td class="border border-gray-300 p-2 text-center">{{ txn[0] }}</td>
+                        <td class="border border-gray-300 p-2">{{ txn[1] }}</td>
+                        <td class="border border-gray-300 p-2">{{ txn[2] }}</td>
+                        <td class="border border-gray-300 p-2">{{ txn[3] }}</td>
+                        <td class="border border-gray-300 p-2 text-center">{{ txn[4] }}</td>
+                        <td class="border border-gray-300 p-2 text-center">
+                            <a href="/issue_return?delete={{ txn[0] }}" onclick="return confirm('Are you sure to delete this entry?')" class="text-red-600 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
